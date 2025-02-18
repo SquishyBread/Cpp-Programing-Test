@@ -10,7 +10,7 @@
 
 class System {
     public:
-        System(int N, double displacement,double radius, double box_size, int seed);
+        System(int N, double displacement,double radius, double box_size, int seed, bool normal);
         void step();
         void save(const std::string &filename);
 
@@ -19,11 +19,14 @@ class System {
         double boxSize;
         double displacement;
         std::mt19937 gen;
-        std::uniform_real_distribution<double> dist;
+        std::uniform_real_distribution<double> uniformDist;
+        std::normal_distribution<double> normalDist;
+        bool isNormal;
 
         bool overlap(int i);
         void enforceBoundaries(Disk & disk);
         double uniform(double min, double max);
+        double normal(double sigma);
 };
 
 #endif

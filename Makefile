@@ -3,7 +3,7 @@ CFLAGS =
 SRC = main.cpp system.cpp disk.cpp
 EXEC = output
 
-ARGS ?= 20 0.6 0.5 20
+ARGS ?= 20 0.05 0.5 20 0
 INT ?= 10
 
 Win: Wclean
