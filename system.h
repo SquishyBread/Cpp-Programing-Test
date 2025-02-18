@@ -19,11 +19,13 @@ class System {
         double boxSize;
         double displacement;
         std::mt19937 gen;
-        std::uniform_real_distribution<double> dist;
+        std::uniform_real_distribution<double> uniformDist;
+        std::normal_distribution<double> normalDist;
 
         bool overlap(int i);
         void enforceBoundaries(Disk & disk);
         double uniform(double min, double max);
+        double normal(double sigma);
 };
 
 #endif
