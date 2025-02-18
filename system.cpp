@@ -28,7 +28,7 @@ bool System::overlap(int i){
 }
 
 void System::step() {
-    for (int i; i<disks.size(); ++i) 
+    for (size_t i; i<disks.size(); ++i) 
     {
         int selected_disk = std::rand() % disks.size();
         double oldx = disks[selected_disk].x;
