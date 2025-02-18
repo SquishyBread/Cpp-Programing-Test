@@ -3,9 +3,17 @@ CFLAGS =
 SRC = main.cpp system.cpp disk.cpp
 EXEC = output
 
-all: 
+ARGS ?= 20 0.6 0.5 20
+INT ?= 10
+
+Win: Wclean
 	$(CC) $(CFLAGS) $(SRC) -o $(EXEC)
-	./$(EXEC) 20 0.6 0.5 20
+	.\$(EXEC) $(ARGS)
+	python3 view.py
+
+Unix: Uclean
+	$(CC) $(CFLAGS) $(SRC) -o $(EXEC)
+	./$(EXEC) $(ARGS)
 	python3 view.py
 
 Wclean: #For windows systems
