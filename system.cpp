@@ -2,13 +2,14 @@
 #include "system.h"
 #include "disk.h"
 
-System::System(int N, double displacement,double radius, double boxSize, int seed) {
+System::System(int N, double displacement,double radius, double boxSize, int seed, bool isNormal) {
 
-        this->boxSize= boxSize;
+        this-> boxSize = boxSize;
         this-> uniformDist = std::uniform_real_distribution<double>(0, 1);
         this-> normalDist = std::normal_distribution<double>(0.0, 1);
-        this->displacement=displacement;
+        this-> displacement = displacement;
         gen = std::mt19937(seed);
+        this-> isNormal = isNormal;
         
         int nSide = static_cast<int>(boxSize/ (2*radius));
 
@@ -34,10 +35,18 @@ void System::step() {
         int selected_disk = std::rand() % disks.size();
         double oldx = disks[selected_disk].getX();
         double oldy = disks[selected_disk].getY();
-        //double dx = uniform(-displacement, displacement);
-        //double dy = uniform(-displacement, displacement);
-        double dx = normal(displacement);
-        double dy = normal(displacement);
+
+        double dx, dy;
+
+        if (isNormal){
+            dx = normal(displacement);
+            dy = normal(displacement);
+        }
+        else{
+            dx = uniform(-displacement, displacement);
+            dy = uniform(-displacement, displacement);
+        }
+        
         this->disks[selected_disk].move(dx, dy);
         
         enforceBoundaries(disks[selected_disk]);
