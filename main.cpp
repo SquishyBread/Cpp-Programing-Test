@@ -14,13 +14,13 @@ int main(int argc, char* argv[]) {
     //original values
     //N = 20
     //maxDisplacment = 0.6
-    //dt = 0.5
+    //r = 0.5
     //L = 20
 
     // number of disks
     int N = atoi(argv[1]);
     double maxDisplacement  = atof(argv[2]);
-    double dt = atof(argv[3]);
+    double r = atof(argv[3]);
     double L = atof(argv[4]);
     bool normal = atoi(argv[5]) == 1;
 
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Using gaussian displacement(0 = no, 1 = yes): " << normal << "\n";
 
     // initialise the system
-    System system(N, maxDisplacement,dt,L,1234,normal);
+    System system(N, maxDisplacement,r,L,1234,normal);
 
     // total number of iterations
     int iterations = N*500;
