@@ -7,6 +7,12 @@ Disk::Disk(double x, double y, double r){
     this->radius = r;
 }
 
+double Disk::getX(){return this->x;}
+double Disk::getY(){return this->y;}
+double Disk::getRadius(){return this->radius;}
+void Disk::setX(double newx) {this->x = newx;}
+void Disk::setY(double newy) {this->y = newy;}
+
 void Disk::move(double dx, double dy){
     this->x += dx;
     this->y += dy;

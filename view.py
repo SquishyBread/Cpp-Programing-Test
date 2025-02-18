@@ -3,11 +3,12 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import glob
 from matplotlib.patches import Circle
+from pathlib import Path
 
 # Get all configurations from the confs folder
-files = glob.glob("confs/c*")
+files = list(Path("confs").glob("c*"))
 # sort them in ascending order
-filenames = sorted(files, key=lambda x: int(x.split("\conf")[1]))
+filenames = sorted(files, key=lambda x: int(x.stem.split("conf")[1]))
 
 # Create a new figure
 fig, ax = plt.subplots()
@@ -33,5 +34,5 @@ def update(frame):
         patch.set_radius(r)
     return circles
 
-ani = FuncAnimation(fig, update, frames=len(filenames), blit=True)
+ani = FuncAnimation(fig, update, frames=len(filenames), blit=True, interval = 20)
 plt.show()

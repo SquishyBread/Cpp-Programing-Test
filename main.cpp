@@ -8,12 +8,25 @@
  *
  * This function initializes the program and manages execution.
  */
-int main() {
+int main(int argc, char* argv[]) {
+
+    //default values
+    //N = 20
+    //maxDisplacment = 0.6
+    //dt = 0.5
+    //L = 20
+
+    std::cout << "Number of disks: " << atoi(argv[1]) << "\n";
+    std::cout << "Max displacement: " << atof(argv[2]) << "\n";
+    std::cout << "Time step: " << atof(argv[3]) << "\n";
+    std::cout << "Box length: " << atof(argv[4]) << "\n";
+
+
     // number of disks
-    int N = 20;
-    double maxDisplacement  = 0.6;
-    double dt = 0.5;
-    double L = 20.0;
+    int N = atoi(argv[1]);
+    double maxDisplacement  = atof(argv[2]);
+    double dt = atof(argv[3]);
+    double L = atof(argv[4]);
 
     // initialise the system
     System system(N, maxDisplacement,dt,L,1234);
