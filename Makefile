@@ -9,7 +9,7 @@ INT ?= 10
 Win: Wclean
 	$(CC) $(CFLAGS) $(SRC) -o $(EXEC)
 	.\$(EXEC) $(ARGS)
-	python3 view.py
+	py view.py
 
 Unix: Uclean
 	$(CC) $(CFLAGS) $(SRC) -o $(EXEC)
