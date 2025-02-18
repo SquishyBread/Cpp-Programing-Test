@@ -13,7 +13,7 @@ System::System(int N, double displacement,double radius, double boxSize, int see
 
         for (int i = 0; i < nSide && disks.size() < N; ++i) {
             for (int j = 0; j < nSide && disks.size() < N; ++j) {
-                disks.push_back(Disk(i * 2*radius, j * 2*radius, radius));
+                disks.push_back(Disk(radius + i * 2*radius, radius + j * 2*radius, radius));
             }
         }
     }   
@@ -47,10 +47,10 @@ void System::step() {
     }
 }
 void System::enforceBoundaries(Disk & disk) {
-        if (disk.getX() < 0) disk.setX(0);
-        if (disk.getX() > boxSize) disk.setX(boxSize);
-        if (disk.getY() < 0) disk.setY(0);
-        if (disk.getY() > boxSize) disk.setY(boxSize);
+        if (disk.getX() < disk.getRadius()) disk.setX(disk.getRadius());
+        if (disk.getX() > boxSize - disk.getRadius()) disk.setX(boxSize - disk.getRadius());
+        if (disk.getY() < disk.getRadius()) disk.setY(disk.getRadius());
+        if (disk.getY() > boxSize - disk.getRadius()) disk.setY(boxSize - disk.getRadius());
     }
 
 double System::uniform (double min, double max){
