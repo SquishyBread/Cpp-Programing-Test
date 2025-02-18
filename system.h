@@ -22,6 +22,8 @@ class System {
         bool overlap(int i);
         void enforceBoundaries(Disk & disk) ;
         double uniform(double min, double max);
+    private:
+        
 };
 
 #endif
